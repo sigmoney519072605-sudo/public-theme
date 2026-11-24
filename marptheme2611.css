@@ -1,0 +1,145 @@
+/* @theme ksmytheme */
+/* Duplicate of the beam theme, file kept for compatibility */
+/* Please consider using beam instead as this file may be removed in the future */
+
+@import "default";
+
+:root {
+  font-family: "CMU Sans Serif", "Segoe UI", Helvetica, sans-serif;
+  --mycolor1: rgb(230, 230, 230);        /* メイン背景色 */
+  --mycolorUDbox: rgb(255, 249, 220);    /* テキストボックスの背景色 */
+  --mycolorUDborder: rgb(255, 213, 0);  /* テキストボックスの枠線色 */
+}
+
+section {
+  padding: 1.5em; /* スライドの四方に余白を空ける */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #141414; /* 見出し（h1〜h6）の標準の文字色 */
+}
+
+/* only apply to the first occurrence of h1 */
+h1:nth-of-type(1) {
+  font-family: "CMU Bright", "Segoe UI Semibold";
+  background-color: var(--mycolor1); /* 通常スライドの第1見出しの背景色（メインカラー） */
+  border-top: 0.2em solid var(--mycolor1); /* 通常スライドの第1見出しの上境界線の色（メインカラー） */
+  padding: 0;
+  position: absolute; /* スライドの最上部（top: 0）に固定配置 */
+  top: 0;
+  right: 0;
+  width: 100%; /* 第1見出しの幅 */
+  height: 1.5em; /* 第1見出しの背景の高さ */
+  text-indent: 0.5em; /* 第1見出しの文字の左インデント */
+}
+
+/* ==========================================================================
+   右上・右下テキストボックス（共通設定と個別配置）
+   ========================================================================== */
+
+/* 共通スタイル */
+.myrubox, .myrdbox {
+  background-color: var(--mycolorUDbox);
+  border: 2px solid var(--mycolorUDborder); /* 枠線（太さ、種類、色） */
+  position: absolute;
+  right: 0.5em;         /* 右からの位置 */
+  padding: 0.25em 0.5em; /* 内側の余白（上下、左右） */
+  font-size: 0.95em;
+  z-index: 10;          /* 前面に出す */
+  display: block;       /* ブロック化 */
+}
+
+/* 個別配置 */
+.myrubox { top: 0.5em; }    /* 上からの位置 */
+.myrdbox { bottom: 1.0em; }  /* 下からの位置 */
+
+/* 箇条書き（ul）自体の余白調整（一括指定） */
+.myrubox ul, .myrdbox ul {
+  margin: 0;
+  padding-left: 1em; /* ポッチ（・）インデント量 */
+}
+
+/* ==========================================================================
+   その他コンポーネント
+   ========================================================================== */
+
+code {
+  background-color: rgba(100, 100, 100, 0.2); /* インラインコードブロックの背景色（透過グレー） */
+}
+
+/* ページ番号 */
+section::after {
+  font-size: 0.6em;
+  content: attr(data-marpit-pagination) ' / ' attr(data-marpit-pagination-total);
+  position: absolute; /* ページ番号の位置を絶対配置にする */
+  text-align: right; /* 右寄せにする */
+  top: 96.2%;
+  width: 100%;
+  right: 0;
+  left: -0.5em;
+}
+
+/* inline math was too large wrt text */
+.katex {
+  font: normal 1.0em KaTeX_Main, 'Times New Roman', serif 
+}
+
+/* the "center" keyword centers the image - may break, careful */
+img[alt~="center"] {
+  display: block;
+  margin: 0 auto;
+}
+
+/* || SECTION CLASS: title */
+section.title>h1 {
+  font-family: "CMU Bright", "Segoe UI Semibold";
+  background-color: var(--mycolor1); /* タイトルスライドの見出し背景色（メインカラー） */
+  border-radius: 25px;
+  text-align: center;
+  top: 25%;
+  left: 0;
+  right: 0;
+  margin: 0 auto; /* 左右中央揃えのショートハンド化 */
+  width: 80%;
+  padding-bottom: 0.2em;
+  height: auto;
+}
+
+/* remake this to be positioned with respect to h1 */
+section.title>p {
+  position: relative;
+  text-align: center;
+  top: 35px;
+}
+
+/* || SECTION CLASS: tinytext */
+section.tinytext>p, section.tinytext>ul, section.tinytext>blockquote {
+  font-size: 0.65em;
+}
+
+/* 強調ボックス（枠・背景ありの共通スタイル） */
+.mybox, .mybox-pos {
+  display: inline-block;
+  padding: 0.1em 0.3em 0 0.3em; /* 4値記述を整理（上 右 下 左） */
+  border: 5px solid #ffe3e3;    /* 枠線の太さと色を一括指定 */
+  background-color: #fffbfb;    /* ごく薄い赤 */
+}
+
+.mybox {
+  margin: 0.1em 0; /* 上下 0.1em、左右 0 */
+}
+
+/* 座標指定ボックス（共通スタイル） */
+.mybox-pos, .mybox-clear {
+  position: absolute;
+  z-index: 10;
+  margin: 0;
+}
+
+/* 枠・背景なしのボックス（画像やグループ配置用） */
+.mybox-clear {
+  display: inline-block;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
