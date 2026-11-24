@@ -23,7 +23,7 @@ h1, h2, h3, h4, h5, h6 {
 h1:nth-of-type(1) {
   font-family: "CMU Bright", "Segoe UI Semibold";
   background-color: var(--mycolor1); /* 通常スライドの第1見出しの背景色（メインカラー） */
-  border-top: 1.2em solid var(--mycolor1); /* 通常スライドの第1見出しの上境界線の色（メインカラー） */
+  border-top: 0.2em solid var(--mycolor1); /* 通常スライドの第1見出しの上境界線の色（メインカラー） */
   padding: 0;
   position: absolute; /* スライドの最上部（top: 0）に固定配置 */
   top: 0;
